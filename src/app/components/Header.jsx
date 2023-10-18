@@ -10,7 +10,7 @@ import {IoMdCart} from 'react-icons/io'
 
 const Header = () => {
   return (
-    <div className="bg-bodyColor h-20">
+    <div className="bg-bodyColor h-20 top-0 sticky z-50">
       <Container className="h-full flex items-center md:gap-x-5 justify-between md:justify-start">
       <Logo/>
       <div className='w-full bg-white hidden md:flex items-center gap-x-1 border-[1px] border-lightText/50 rounded-full px-4 py-1.5 focud-within:border-orange-600 group'>
