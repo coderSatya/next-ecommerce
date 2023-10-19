@@ -4,13 +4,14 @@ import Image from "next/image";
 import { calculatePercentage } from "@/helpers";
 import FormattedPrice from "./FormattedPrice";
 import Rating from "./Rating";
-
+import Link from "next/link";
 const ProductsData = ({ item }) => {
-  console.log(item, "111");
+ 
   
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div>
+      <Link href={{pathname:"/product", query:{_id:item._id}}}>
         <div className="w-full h-96 group overflow-hidden relative">
           <Image
             src={item?.image}
@@ -25,6 +26,7 @@ const ProductsData = ({ item }) => {
             </span>
           )}
         </div>
+        </Link>
       </div >
       <div className="border-[1px] border-slate-300 border-t-0 px-2 py-4 flex flex-col gap-y-2 bg-white rounded-b-lg">
       <p>{item?.title}</p>
