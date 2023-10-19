@@ -1,9 +1,13 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { calculatePercentage } from "@/helpers";
+import FormattedPrice from "./FormattedPrice";
+import Rating from "./Rating";
 
 const ProductsData = ({ item }) => {
   console.log(item, "111");
+  
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div>
@@ -21,9 +25,30 @@ const ProductsData = ({ item }) => {
             </span>
           )}
         </div>
-      </div>
+      </div >
+      <div className="border-[1px] border-slate-300 border-t-0 px-2 py-4 flex flex-col gap-y-2 bg-white rounded-b-lg">
       <p>{item?.title}</p>
-    </div>
+    
+      <div className="flex items-center justify-between">
+      <div className="border-[1px] border-orange-600 py-1 px-4 rounded-full text-xs">
+      <p>{calculatePercentage(item?.price, item?.oldPrice)}% off</p>
+      </div>
+      <div className="flex items-center gap-x-2">
+      <p className="text-slate-500 line-through text-sm"><FormattedPrice amount={item?.oldPrice}/></p>
+      <p className="font-semibold"><FormattedPrice amount={item?.price}/></p>
+      </div>
+     
+     
+      </div>
+      <div className="flex items-center justify-between">
+      <button className="bg-orange-600 px-4 py-2 text-sm tracking-wide rounded-full text-slate-100 hover:bg-orange-800 hover:text-white duration-200">add to cart</button>
+      <div>
+      <Rating star={item?.rating}/>
+      </div>
+      </div>
+      </div>
+      </div>
+    
   );
 };
 

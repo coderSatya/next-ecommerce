@@ -13,7 +13,7 @@ module.exports = {
       colors:{
         bodyColor:"#fbfaf7",
         bgLight:"#1010100d",
-        darkTest:"#242424",
+        darkText:"#242424",
         lightText:"#a5a5a5",
       }
     },
