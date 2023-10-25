@@ -52,7 +52,7 @@ const ProductPage = async({searchParams}) => {
     <div>
    <Container>
    <SingleProduct ProductDetailItem={ProductDetailItem}/>
-   <p>Trending Products</p>
+   <p className='text-xl py-1 font-semibold'>Trending Products</p>
    <div className='grid grids-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4'>
    {trendingProducts.map((item, index)=>{
 return (
