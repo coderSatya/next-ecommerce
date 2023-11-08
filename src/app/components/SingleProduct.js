@@ -28,7 +28,7 @@ const SingleProduct = ({ProductDetailItem}) => {
     </span>
     </div>
     <div className='flex items-center cursor-pointer group'>
-    <button onClick={()=>dispatch(addToCart(item)) && toast.success(`${item?.title.substring(0,15)} added successfully`)} className='bg-darkText text-slate-100 px-6 py-3 text-sm uppercase flex items-center border-r-[1px]
+    <button  className='bg-darkText text-slate-100 px-6 py-3 text-sm uppercase flex items-center border-r-[1px]
      border-r-slate-500'>add to cart</button>
      <span className='bg-darkText text-xl text-slate-100 w-12 flex items-center justify-center group-hover:bg-orange-500 duration-200 py-3'><IoMdCart /></span>
     </div>
