@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { calculatePercentage } from "@/helpers";
@@ -7,14 +8,17 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
-import { addToCart } from "../../../redux-toolkit/slices/shoppingSlices";
+import { addToCart } from "../../redux-toolkit/slices/shoppingSlices";
 import { Toaster } from "react-hot-toast";
+import { Providers } from "../provider";
+import store from "@/redux-toolkit/store/store";
 const ProductsData = ({ item }) => {
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <div className="w-full rounded-lg overflow-hidden">
-    <Toaster />
+      <Toaster />
+
       <div>
         <Link href={{ pathname: "/product", query: { _id: item._id } }}>
           <div className="w-full h-96 group overflow-hidden relative">
@@ -49,19 +53,24 @@ const dispatch = useDispatch()
             </p>
           </div>
         </div>
+
         <div className="flex items-center justify-between">
-          <button onClick={()=>dispatch(addToCart(item)) && 
-            toast.success(`${item?.title.substring(0,15)} added successfully!`)}  className="bg-orange-600 px-4 py-2 text-sm tracking-wide rounded-full text-slate-100 hover:bg-orange-800 hover:text-white duration-200">
+          <button
+            onClick={() =>
+              dispatch(addToCart(item)) &&
+              toast.success(
+                `${item?.title.substring(0, 15)} added successfully!`
+              )
+            }
+            className="bg-orange-600 px-4 py-2 text-sm tracking-wide rounded-full text-slate-100 hover:bg-orange-800 hover:text-white duration-200"
+          >
             add to cart
           </button>
-          </div>
-        
-            <Rating star={item?.rating} />
-          </div>
         </div>
-     
-      
 
+        <Rating star={item?.rating} />
+      </div>
+    </div>
   );
 };
 

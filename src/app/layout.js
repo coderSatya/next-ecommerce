@@ -3,9 +3,10 @@ import "./globals.css";
 import Header from "./components/Header";
 import "slick-carousel/slick/slick.css";
 import Footer from "./components/Footer";
-import { Provider } from "react-redux";
-import { store } from "../../redux-toolkit/store/store";
+
+import { store } from "../redux-toolkit/store/store";
 import Layout from "./components/Layout";
+import { Providers } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +19,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="w-full bg-main-bg text-darkText">
-      
+        <Providers>
           <Header />
+
           {children}
+
           <Footer />
-       
+        </Providers>
       </body>
     </html>
   );
