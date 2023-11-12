@@ -3,16 +3,22 @@ import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import Logo from "./Logo";
 import { BsCart } from "react-icons/bs";
+import {useSelector} from 'react-redux'
 
 import { RiSearch2Line } from "react-icons/ri";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoMdCart } from "react-icons/io";
-import { useSelector } from "react-redux";
+import { deleteUser } from "@/redux-toolkit/slices/shoppingSlices";
+
 import FormattedPrice from "./FormattedPrice";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
 const Header = () => {
   const [totalAmt, setTotalAmt] = useState(0);
   const { productData } = useSelector((state) => state.shopping);
+const dispatch = useDispatch()
+  const {userInfo} = useSelector((state)=>state.shopping)
+  console.log(userInfo, 'addUser')
 
   useEffect(() => {
     let Amt = 0;
@@ -35,10 +41,17 @@ const Header = () => {
             className="placeholder:text-sm flex-1 outline:none"
           />
         </div>
-        <div className="bg-bgLight text-gray-500 flex items-center justify-center p-1.5 rounded-full hover:bg-white border-[1px] border-gray-200 hover:border-orange-500">
+        <Link href="/auth/sign-up">
+          <div className="bg-bgLight text-gray-500 flex items-center justify-center p-1.5 rounded-full hover:bg-white border-[1px] border-gray-200 hover:border-orange-500">
           <AiOutlineUser className="text-2xl" />
-          <p className="text-sm font-semibold">Login/Register</p>
+        {userInfo ?(
+        
+            <h4 className="flex justify-normal">{userInfo.username}</h4> 
+           
+          
+        ) : <button className="text-sm font-semibold">Login/Register</button>}  
         </div>
+        </Link>
         <Link href="/cart">
         <div className="bg-black hover:bg-slate-950 rounded-full text-slate-100 hover:text-white flex items-center justify-center gap-x-1 px-3 py-1.5 border-[1px] border-black hover:border-orange-600 duration-200 relative">
           <IoMdCart className="text-2xl" />
@@ -48,6 +61,7 @@ const Header = () => {
           </span>
         </div>
         </Link>
+      {userInfo &&  <button onClick={()=>dispatch(deleteUser())}>Logout</button>}
       </Container>
     </div>
   );
