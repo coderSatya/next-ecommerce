@@ -1,2 +1,2 @@
 import NextAuth from 'next-auth/next'
-const handler = NextAuth(options);
+// const handler = NextAuth(options);
