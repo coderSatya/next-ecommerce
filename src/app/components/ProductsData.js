@@ -22,7 +22,7 @@ const ProductsData = ({ item }) => {
           )}
         </div>
       </div>
-      <p>{item?.title}</p>
+      <p className="border-[1px] border-slate-300">{item?.title}</p>
     </div>
   );
 };
