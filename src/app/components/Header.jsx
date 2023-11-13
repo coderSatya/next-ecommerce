@@ -18,7 +18,7 @@ const Header = () => {
   const { productData } = useSelector((state) => state.shopping);
 const dispatch = useDispatch()
   const {userInfo} = useSelector((state)=>state.shopping)
-  console.log(userInfo, 'addUser')
+
 
   useEffect(() => {
     let Amt = 0;
